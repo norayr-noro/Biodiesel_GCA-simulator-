@@ -41,7 +41,7 @@
     margin: 0 0 0.5em;
   }
 
-  /* ---------- tutorial overlay ---------- */
+  /* tutorial overlay */
   .tutorial-overlay {
     position: fixed;
     inset: 0;
@@ -65,7 +65,7 @@
   .tutorial-card p { margin: 0 0 0.9rem; }
   .tutorial-card .btn-primary { width: 100%; margin-top: 0.5rem; }
 
-  /* ---------- header ---------- */
+  /* --- header -- */
   .site-header {
     max-width: 1080px;
     margin: 0 auto;
@@ -134,7 +134,7 @@
     margin-bottom: 1.25rem;
   }
 
-  /* ---------- simulator layout ---------- */
+  /* - simulator layout - */
   .sim-grid {
     display: grid;
     grid-template-columns: minmax(240px, 320px) 1fr;
@@ -246,7 +246,7 @@
     margin-top: 0.75rem;
   }
 
-  /* ---------- reactor illustration ---------- */
+  /* - reactor illustration -- */
   .reactor-wrap { text-align: center; margin-bottom: 0.5rem; }
   .reactor-wrap svg { width: 100%; max-width: 220px; height: auto; }
   .feedstock-note { text-align: center; color: var(--muted); font-size: 0.9rem; margin: 0.25rem 0 1.25rem; }
@@ -338,7 +338,7 @@
   .flow-diagram line { stroke: var(--muted); stroke-width: 2; }
   .flow-diagram polygon { fill: var(--muted); }
 
-  /* ---------- results tab ---------- */
+  /* -- results tab - */
   .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
   .data-table th, .data-table td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--line); }
   .data-table th { color: var(--muted); font-weight: 700; }
@@ -353,7 +353,7 @@
   .chart .ref-line { stroke: var(--coral-dark); stroke-width: 1.5; stroke-dasharray: 4 3; }
   .chart .ref-label { font-size: 10px; fill: var(--coral-dark); }
 
-  /* ---------- reactor animation / robust SVG clip ---------- */
+  /*  reactor animation */
   #reactorLiquid {
     transition: y 900ms cubic-bezier(.2,.8,.2,1), height 900ms cubic-bezier(.2,.8,.2,1), fill 450ms ease;
   }
@@ -371,7 +371,7 @@
     font-size: 0.9rem;
   }
 
-  /* ---------- citations tab ---------- */
+  /*citations tab -*/
   .source-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0,1fr));
@@ -456,7 +456,7 @@
 
 <main>
 
-  <!-- ===================== SIMULATOR ===================== -->
+  <!--  SIMULATOR  -->
   <section id="tab-simulator" class="tab-panel active" role="tabpanel">
     <div class="sim-grid">
 
@@ -563,7 +563,7 @@
     </div>
   </section>
 
-  <!-- ===================== SCIENCE ===================== -->
+  <!--  SCIENCE  -->
   <section id="tab-science" class="tab-panel" role="tabpanel">
     <article class="panel prose">
       <h2>What is actually happening</h2>
@@ -607,7 +607,7 @@
     </article>
   </section>
 
-  <!-- ===================== RESULTS ===================== -->
+  <!-- =====RESULTS ==== -->
   <section id="tab-results" class="tab-panel" role="tabpanel">
 
     <div class="panel">
@@ -646,7 +646,7 @@
 
   </section>
 
-  <!-- ===================== SOURCES ===================== -->
+  <!-- =====SOURCES ===-->
   <section id="tab-sources" class="tab-panel" role="tabpanel">
     <article class="panel prose">
       <h2>Sources &amp; Evidence</h2>
@@ -739,7 +739,7 @@
     </article>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
+  <!-- == ABOUT = -->
   <section id="tab-about" class="tab-panel" role="tabpanel">
     <article class="panel prose">
       <h2>Research question</h2>
@@ -760,7 +760,7 @@
     </article>
   </section>
 
-  <!-- ===================== SOURCES ===================== -->
+  <!-- === SOURCES ===== -->
   <section id="tab-sources" class="tab-panel" role="tabpanel">
     <article class="panel prose">
       <h2>Sources & evidence</h2>
@@ -793,7 +793,7 @@
 <footer>Built for a CREST Gold project. Just open this file in a browser, no installation needed.</footer>
 
 <script>
-  /* ===================== DATA ===================== */
+  /* ==== DATA ===== */
 
   var FEEDSTOCKS = {
     olive: {
@@ -847,9 +847,8 @@
   };
 
   // These are the conditions the two real feedstocks above are calibrated
-  // against. Only the 9 to 1 ratio is a number from my own notes, the
-  // rest are reasonable assumptions. Swap them for my actual logged
-  // values if I have them, for a tighter fit.
+  // against. Only the 9 to 1 ratio is a number from my own notes the
+  // rest are reasonable assumptions
   var REFERENCE_CONDITIONS = {
     temperature: 60,
     molarRatio: 9,
@@ -857,9 +856,9 @@
     time: 60
   };
 
-  var RECOVERY_EFFICIENCY = 0.90; // matches my sunflower trial: 221.4 ml from 246 ml recovered
+  var RECOVERY_EFFICIENCY = 0.90; // matches the sunflower trial: 221.4 ml from 246 ml recovered
 
-  /* ===================== MODEL ===================== */
+  /*  MODEL  */
   // Four simple curves, each giving a number from 0 to 1 that says how
   // favourable that one condition is. Multiplying them together gives a
   // general trend for how far the reaction goes.
@@ -979,7 +978,7 @@
     };
   }
 
-  /* ===================== REACTOR DRAWING ===================== */
+  /*  REACTOR DRAWING  */
   // Moves the liquid level and changes its colour to match the last result.
 
   function updateReactor(yieldPct) {
@@ -1025,9 +1024,9 @@
     }, 1050);
   }
 
-  /* ===================== CHARTS ===================== */
+  /*  CHARTS  */
   // Small chart helpers with no outside library, so the file stays
-  // self-contained.
+  // self-contained. (no need for extra complications0
 
   function svgEl(tag, attrs) {
     var ns = "http://www.w3.org/2000/svg";
@@ -1155,7 +1154,7 @@
     container.appendChild(svg);
   }
 
-  /* ===================== MAIN ===================== */
+  /*  MAIN  */
 
   var batchCount = 0;
   var batchLog = [];
@@ -1188,7 +1187,7 @@
     var conditions = currentConditions();
     var result = runSimulation(feedstockKey, conditions);
 
-    // NaOH is a little less selective than KOH in real batches.
+    // NaOH is a little less selective than KOH in real batches. (but there is bacsicaly no difference)
     if (catalyst === "naoh") {
       result.conversion = round1(result.conversion * 0.97);
       result.yieldPct = round1(result.yieldPct * 0.97);
